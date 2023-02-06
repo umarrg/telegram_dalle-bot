@@ -63,7 +63,7 @@ bot.onText(/\/breed (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 4000);
+        }, 5000);
     });
 
     // console.log(msg.from.username)
@@ -117,7 +117,7 @@ bot.onText(/\/snazzy (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 4000);
+        }, 5000);
     });
     const url = await generateImg(req);
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
@@ -167,7 +167,7 @@ bot.onText(/\/cogent (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 4000);
+        }, 5000);
     });
     bot.sendPhoto(msg.chat.id, "https://png.pngitem.com/pimgs/s/117-1171969_monochrome-hd-png-download.png", {
         caption: "images are currently being generated...",
@@ -220,7 +220,7 @@ bot.onText(/\/artistic (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 4000);
+        }, 5000);
     });
     // console.log(msg.from.username)
     let req = "artistic" + resp;
