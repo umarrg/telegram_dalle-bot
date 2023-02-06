@@ -92,6 +92,7 @@ bot.onText(/\/breed (.+)/, async (msg, match) => {
             },
             disable_web_page_preview: false,
         });
+        bot.deleteMessage(msg.chat.id,msg.message_id-i).catch(er=>{return})
     }
 
 
@@ -138,6 +139,7 @@ bot.onText(/\/snazzy (.+)/, async (msg, match) => {
             },
             disable_web_page_preview: false,
         });
+        bot.deleteMessage(msg.chat.id,msg.message_id-i).catch(er=>{return})
     }
 
 
@@ -188,6 +190,7 @@ bot.onText(/\/cogent (.+)/, async (msg, match) => {
             },
             disable_web_page_preview: false,
         });
+        bot.deleteMessage(msg.chat.id,msg.message_id-i).catch(er=>{return})
     }
 
 
@@ -233,6 +236,7 @@ bot.onText(/\/artistic (.+)/, async (msg, match) => {
             },
             disable_web_page_preview: false,
         });
+        bot.deleteMessage(msg.chat.id,msg.message_id-i).catch(er=>{return})
     }
 
 
