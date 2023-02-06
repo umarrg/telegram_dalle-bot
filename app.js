@@ -59,7 +59,12 @@ bot.onText(/\/breed (.+)/, async (msg, match) => {
         caption: "images are currently being generated...",
         parse_mode: "HTML",
         reply_to_message_id: msg.message_id
-    })
+    }).then(function (result) {
+        setTimeout(() => {
+            bot.deleteMessage(msg.chat.id, result.message_id);
+
+        }, 4000);
+    });
 
     // console.log(msg.from.username)
     const url = await generateImg(resp);
@@ -91,9 +96,7 @@ bot.onText(/\/breed (.+)/, async (msg, match) => {
                 ]
             },
             disable_web_page_preview: false,
-        }).then(function (result) {
-            bot.deleteMessage(msg.chat.id, result.message_id);
-        });
+        })
     }
 
 
@@ -110,7 +113,12 @@ bot.onText(/\/snazzy (.+)/, async (msg, match) => {
         caption: "images are currently being generated...",
         parse_mode: "HTML",
         reply_to_message_id: msg.message_id
-    })
+    }).then(function (result) {
+        setTimeout(() => {
+            bot.deleteMessage(msg.chat.id, result.message_id);
+
+        }, 4000);
+    });
     const url = await generateImg(req);
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
@@ -139,9 +147,7 @@ bot.onText(/\/snazzy (.+)/, async (msg, match) => {
                 ]
             },
             disable_web_page_preview: false,
-        }).then(function (result) {
-            bot.deleteMessage(msg.chat.id, result.message_id);
-        });
+        })
     }
 
 
@@ -157,7 +163,12 @@ bot.onText(/\/cogent (.+)/, async (msg, match) => {
         caption: "images are currently being generated...",
         parse_mode: "HTML",
         reply_to_message_id: msg.message_id
-    })
+    }).then(function (result) {
+        setTimeout(() => {
+            bot.deleteMessage(msg.chat.id, result.message_id);
+
+        }, 4000);
+    });
     bot.sendPhoto(msg.chat.id, "https://png.pngitem.com/pimgs/s/117-1171969_monochrome-hd-png-download.png", {
         caption: "images are currently being generated...",
         parse_mode: "HTML",
@@ -191,9 +202,7 @@ bot.onText(/\/cogent (.+)/, async (msg, match) => {
                 ]
             },
             disable_web_page_preview: false,
-        }).then(function (result) {
-            bot.deleteMessage(msg.chat.id, result.message_id);
-        });
+        })
     }
 
 
@@ -207,7 +216,12 @@ bot.onText(/\/artistic (.+)/, async (msg, match) => {
         caption: "images are currently being generated...",
         parse_mode: "HTML",
         reply_to_message_id: msg.message_id
-    })
+    }).then(function (result) {
+        setTimeout(() => {
+            bot.deleteMessage(msg.chat.id, result.message_id);
+
+        }, 4000);
+    });
     // console.log(msg.from.username)
     let req = "artistic" + resp;
     const url = await generateImg(req);
@@ -238,9 +252,7 @@ bot.onText(/\/artistic (.+)/, async (msg, match) => {
                 ]
             },
             disable_web_page_preview: false,
-        }).then(function (result) {
-            bot.deleteMessage(msg.chat.id, result.message_id);
-        });
+        })
     }
 
 
