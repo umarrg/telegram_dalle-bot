@@ -60,13 +60,13 @@ bot.onText(/\/breed (.+)/, async (msg, match) => {
         parse_mode: "HTML",
         reply_to_message_id: msg.message_id
     })
-    
+
     // console.log(msg.from.username)
     const url = await generateImg(resp);
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
     } else {
-       
+
         const res = await controller.addNew({ img: url, prompt: resp, model: "breed" });
         let uid = res._id;
         let r = ` New request completed for @${username}` + "\r\n" + "\r\n" + `<b>Request ID:</b> ${uid}  
@@ -91,8 +91,9 @@ bot.onText(/\/breed (.+)/, async (msg, match) => {
                 ]
             },
             disable_web_page_preview: false,
+        }).then(function (result) {
+            bot.deleteMessage(msg.chat.id, result.message_id);
         });
-        bot.deleteMessage(msg.chat.id,msg.message_id-i).catch(er=>{return})
     }
 
 
@@ -138,8 +139,9 @@ bot.onText(/\/snazzy (.+)/, async (msg, match) => {
                 ]
             },
             disable_web_page_preview: false,
+        }).then(function (result) {
+            bot.deleteMessage(msg.chat.id, result.message_id);
         });
-        bot.deleteMessage(msg.chat.id,msg.message_id-i).catch(er=>{return})
     }
 
 
@@ -189,8 +191,9 @@ bot.onText(/\/cogent (.+)/, async (msg, match) => {
                 ]
             },
             disable_web_page_preview: false,
+        }).then(function (result) {
+            bot.deleteMessage(msg.chat.id, result.message_id);
         });
-        bot.deleteMessage(msg.chat.id,msg.message_id-i).catch(er=>{return})
     }
 
 
@@ -235,8 +238,9 @@ bot.onText(/\/artistic (.+)/, async (msg, match) => {
                 ]
             },
             disable_web_page_preview: false,
+        }).then(function (result) {
+            bot.deleteMessage(msg.chat.id, result.message_id);
         });
-        bot.deleteMessage(msg.chat.id,msg.message_id-i).catch(er=>{return})
     }
 
 
