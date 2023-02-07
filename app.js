@@ -118,7 +118,6 @@ bot.onText(/\/taijourney (.+)/, async (msg, match) => {
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
     } else {
-
         const res = await controller.addNew({ img: url, prompt: resp, model: "taijourney", type:"midjourney"  });
         let uid = res._id;
         let r = ` New request completed for @${username}` + "\r\n" + "\r\n" + `<b>Request ID:</b> ${uid}  
