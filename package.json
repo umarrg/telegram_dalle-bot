@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "api": "^5.0.7",
     "cors": "^2.8.5",
     "dalle-node": "^1.0.8",
     "dotenv": "^16.0.3",
