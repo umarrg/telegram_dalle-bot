@@ -69,7 +69,7 @@ async function createOrder(text,style) {
         layout: 'vertical',
         prompt: text
     })
-        .then(({ data }) => { console.log(data); return data.orderId })
+        .then(({ data }) => { return data.orderId })
         .catch(err => console.error(err));
 
 
@@ -81,7 +81,7 @@ async function gen(id) {
 
 
     const url = await sdk.aiArtGetOrder({ id: id })
-        .then(({ data }) => { console.log(data); return data.thumbnails[0].url })
+        .then(({ data }) => {  return data.thumbnails[0].url })
         .catch(err => console.error(err));
 
 
@@ -109,7 +109,6 @@ bot.onText(/\/taijourney (.+)/, async (msg, match) => {
         }, 13000);
     });
 
-    // console.log(msg.from.username)
     const url = await genImg(resp, "midjourney");
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
@@ -261,7 +260,6 @@ bot.onText(/\/taiscape (.+)/, async (msg, match) => {
 
         }, 13000);
     });
-    // console.log(msg.from.username)
     let req = resp;
     const url = await genImg(req,"nature ");
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
