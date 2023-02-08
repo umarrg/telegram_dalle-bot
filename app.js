@@ -7,10 +7,6 @@ const cors = require("cors");
 const sdk = require('api')('@neural-love/v1.0#1d6anw43ld3oas2i');
 
 
-
-
-
-
 const app = express();
 
 app.use(express.json());
@@ -41,7 +37,7 @@ async function genImg(text, style) {
             setTimeout(function () {
                 let res = gen(id);
                 resolve(res)
-            }, 13000);;
+            }, 16000);;
         });
 
     }
@@ -109,8 +105,8 @@ bot.onText(/\/taijourney (.+)/, async (msg, match) => {
     }).then(function (result) {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
-
-        }, 11000);
+          
+        }, 13000);
     });
 
     // console.log(msg.from.username)
@@ -163,7 +159,7 @@ bot.onText(/\/taipunk (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 11000);
+        }, 13000);
     });
     const url = await genImg(req, "cyberpunk");
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
@@ -213,13 +209,9 @@ bot.onText(/\/taicomic (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 11000);
+        }, 13000);
     });
-    bot.sendPhoto(msg.chat.id, "https://png.pngitem.com/pimgs/s/117-1171969_monochrome-hd-png-download.png", {
-        caption: "images are currently being generated...",
-        parse_mode: "HTML",
-        reply_to_message_id: msg.message_id
-    })
+   
     const url = await genImg(req,"space");
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
@@ -267,7 +259,7 @@ bot.onText(/\/taiscape (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 11000);
+        }, 13000);
     });
     // console.log(msg.from.username)
     let req = resp;
