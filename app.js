@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
 async function genImg(text, style) {
 
-    let id = await createOrder(text,style);
+    let id = await createOrder(text, style);
     let date = new Date();
 
     function x(resolve) {
@@ -37,7 +37,7 @@ async function genImg(text, style) {
             setTimeout(function () {
                 let res = gen(id);
                 resolve(res)
-            }, 16000);;
+            }, 18000);;
         });
 
     }
@@ -46,17 +46,9 @@ async function genImg(text, style) {
     return res
 
 
-
-
-
-
-
-
-
-
 }
 
-async function createOrder(text,style) {
+async function createOrder(text, style) {
 
     const id = await sdk.aiArtGenerate({
         amount: 2,
@@ -81,7 +73,7 @@ async function gen(id) {
 
 
     const url = await sdk.aiArtGetOrder({ id: id })
-        .then(({ data }) => {  return data.thumbnails[0].url })
+        .then(({ data }) => { return data.thumbnails[0].url })
         .catch(err => console.error(err));
 
 
@@ -92,6 +84,12 @@ async function gen(id) {
 
 }
 
+
+bot.onText(/^\/start/, (msg) => {
+    const chatId = msg.chat.id;
+    const resp = `Welcome to <b>Tosa-Ai Bot Image Generator 🤖</b> With our Tosa - AI image generator bot, you can turn your words into mesmerizing images within a click!` + "\r\n" + `Commands list:` + "\r\n" + `/taijourney <b>Midjourney</b> - This is great for creating abstract or surrealistic images` + "\r\n" + `/taipunk <b>Cyber Punk</b> - It generates characters in the style of Edgerunners.` + "\r\n" + `/taiscape <b>Nature</b> - It generates portraits, landscapes and abstract art.` + "\r\n" + `/taicomic <b>Space</b> - The visuals in the comics series!`;
+    bot.sendMessage(chatId, resp);
+});
 
 
 bot.onText(/\/taijourney (.+)/, async (msg, match) => {
@@ -105,15 +103,15 @@ bot.onText(/\/taijourney (.+)/, async (msg, match) => {
     }).then(function (result) {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
-          
-        }, 13000);
+
+        }, 17000);
     });
 
     const url = await genImg(resp, "midjourney");
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
     } else {
-        const res = await controller.addNew({ img: url, prompt: resp, model: "taijourney", type:"midjourney"  });
+        const res = await controller.addNew({ img: url, prompt: resp, model: "taijourney", type: "midjourney" });
         let uid = res._id;
         let r = ` New request completed for @${username}` + "\r\n" + "\r\n" + `<b>Request ID:</b> ${uid}  
         `  + "\r\n" + "\r\n" + `<b>Model:</b> breed` + "\r\n" + `<b>Prompt:</b> ${resp}` + "\r\n" + "\r\n"
@@ -158,13 +156,13 @@ bot.onText(/\/taipunk (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 13000);
+        }, 17000);
     });
     const url = await genImg(req, "cyberpunk");
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
     } else {
-        const res = await controller.addNew({ img: url, prompt: resp, model: "taipunk", type:"cyberpunk" });
+        const res = await controller.addNew({ img: url, prompt: resp, model: "taipunk", type: "cyberpunk" });
         let uid = res._id;
         let r = ` New request completed for @${username}` + "\r\n" + "\r\n" + `<b>Request ID:</b> ${uid}  
         `  + "\r\n" + "\r\n" + `<b>Model:</b> cyberpunk` + "\r\n" + `<b>Prompt:</b> ${resp}` + "\r\n" + "\r\n"
@@ -208,15 +206,15 @@ bot.onText(/\/taicomic (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 13000);
+        }, 17000);
     });
-   
-    const url = await genImg(req,"space");
+
+    const url = await genImg(req, "space");
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
     } else {
-    const url = await genImg(req,"space");
-        const res = await controller.addNew({ img: url, prompt: resp, model: "cogent", type:"space" });
+        const url = await genImg(req, "space");
+        const res = await controller.addNew({ img: url, prompt: resp, model: "cogent", type: "space" });
         let uid = res._id;
         let r = ` New request completed for @${username}` + "\r\n" + "\r\n" + `<b>Request ID:</b> ${uid}  
         `  + "\r\n" + "\r\n" + `<b>Model:</b> cogent` + "\r\n" + `<b>Prompt:</b> ${resp}` + "\r\n" + "\r\n"
@@ -258,10 +256,10 @@ bot.onText(/\/taiscape (.+)/, async (msg, match) => {
         setTimeout(() => {
             bot.deleteMessage(msg.chat.id, result.message_id);
 
-        }, 13000);
+        }, 17000);
     });
     let req = resp;
-    const url = await genImg(req,"nature ");
+    const url = await genImg(req, "nature ");
     if (typeof url === 'string' && url.length === 0 || url === undefined || url === null) {
         console.log(' is empty');
     } else {
