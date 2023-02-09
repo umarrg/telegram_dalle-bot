@@ -88,7 +88,9 @@ async function gen(id) {
 bot.onText(/^\/start/, (msg) => {
     const chatId = msg.chat.id;
     const resp = `Welcome to <b>Tosa-Ai Bot Image Generator 🤖</b> With our Tosa - AI image generator bot, you can turn your words into mesmerizing images within a click!` + "\r\n" + `Commands list:` + "\r\n" + `/taijourney <b>Midjourney</b> - This is great for creating abstract or surrealistic images` + "\r\n" + `/taipunk <b>Cyber Punk</b> - It generates characters in the style of Edgerunners.` + "\r\n" + `/taiscape <b>Nature</b> - It generates portraits, landscapes and abstract art.` + "\r\n" + `/taicomic <b>Space</b> - The visuals in the comics series!`;
-    bot.sendMessage(chatId, resp);
+    bot.sendMessage(chatId, resp, {
+        parse_mode: "HTML",
+    });
 });
 
 
